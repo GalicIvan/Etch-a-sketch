@@ -1,20 +1,23 @@
 body {
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    max-width: 600px;
 }
 
 .grid-item {
-    display: flex;
-    box-sizing: border-box;
     width: calc(100% / 16);
-    background-color: blue;
-    height: 30px; 
-    width: 30px; 
-    margin: 2px
+    height: 20px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.grid-item.hovered {
+    background-color: black; /* Adjust the background color as needed */
 }

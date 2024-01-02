@@ -1,13 +1,16 @@
-const gridContainer = document.querySelector('.grid-container')
+const gridItem = document.createElement('div');
+const gridContainer = document.querySelector('.grid-container');
 
-for (let i = 0; i < 16; i++) {
-    const row = document.createElement('div');
-    row.classList.add('grid-container');
+  // Create a 16x16 grid
+for (let i = 0; i < 16 * 16; i++) {
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
+    
+    gridItem.addEventListener('mouseover', () => {
+      gridItem.classList.add('hovered') 
+    })
+    
+    gridContainer.appendChild(gridItem);
+}
 
-    for (let j = 0; j < 16; j++) {
-      const gridItem = document.createElement('div');
-      gridItem.classList.add('grid-item');
-      row.appendChild(gridItem);
-    }
-    gridContainer.appendChild(row);
-  }
+
