@@ -1,42 +1,46 @@
-const gridItem = document.createElement('div');
 const gridContainer = document.querySelector('.grid-container');
-const gridContainer2 = document.querySelector('.grid-container2');
 const button = document.querySelector('#button')
-
-
-  // Create a 16x16 grid
-for (let i = 0; i < 16 * 16; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-
-    gridItem.addEventListener('mouseover', () => {
-      gridItem.classList.add('hovered') 
-    })
-    
-    gridContainer.appendChild(gridItem);
-}
-
+const button2 = document.querySelector('#button2')
 let num
+let num2 = 16
 
-function clickedButton() {
+for (let i = 0; i < num2 * num2; i++) {
+  const gridItem = document.createElement('div');
+  gridItem.classList.add('grid-item');
+  gridItem.style.cssText = `width: calc(100% / ${num2});`
 
-  // TODO: overrideat gornji grid i vidit zasto tek iz treceg radi
-
-  button.addEventListener('click', () => {
-    num = prompt('Enter a number: ')
+  gridItem.addEventListener('mouseover', () => {
+    gridItem.classList.add('hovered') 
   })
-  let num2 = parseInt(num, 10)
+
+  button2.addEventListener('click', () => {
+    gridItem.classList.remove('hovered')
+  })
   
-  for (let i = 0; i < num2 * num2; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.style.cssText = `width: calc(100% / ${num2} )`;
-    gridItem.classList.add('grid-item')
-    
-    gridItem.addEventListener('mouseover', () => {
-      gridItem.classList.add('hovered') 
-    })
-    
-    gridContainer2.appendChild(gridItem);
-  }
+  gridContainer.appendChild(gridItem);
 }
 
+function drawSecondGrid() {
+for (let i = 0; i < num2 * num2; i++) {
+  const gridItem = document.createElement('div');
+  gridItem.classList.add('grid-item');
+  gridItem.style.cssText = `width: calc(100% / ${num2});`
+
+  gridItem.addEventListener('mouseover', () => {
+    gridItem.classList.add('hovered') 
+  })
+
+  button2.addEventListener('click', () => {
+    gridItem.classList.remove('hovered')
+  })
+  
+  gridContainer.appendChild(gridItem);
+}}
+
+button.addEventListener('click', () => {
+    gridContainer.innerHTML = ''
+    num = prompt('Enter a number: ')
+    num2 = 0
+    num2 = parseInt(num, 10)
+    drawSecondGrid()
+  })
